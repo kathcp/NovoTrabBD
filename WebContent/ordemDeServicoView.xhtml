@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Menu Principal</title>
+	<link href="estilo/estilo.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div id="geral">
+		<div id="topo">
+			<div id="topo_imagem"></div>
+			<div id="topo_texto">
+				<h2>Gerenciador de Frota</h2>
+			</div>
+		</div>
+
+		<div id="barraMenu">
+			<ul>
+				<li><a href="index.xhtml">Principal</a></li>
+				<li><a href="veiculo.xhtml">Veículo</a></li>
+				<li><a href="fornecedor.xhtml">Fornecedor</a></li>
+				<li><a href="pecas.xhtml">Peça</a></li>
+				<li><a href="ordemDeServico.xhtml">Ordem de Serviço</a></li>
+			</ul>
+		</div>
+		<div id="conteudo">
+			<h3>Ordem de Serviço</h3>
+			<h:messages />
+			<!-- ALTERACOES SOMENTE DAQUI ABAIXO -->
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputLabel value="Numero O.S.: " />
+					<h:inputText id="num" value="#{oservicoMB.osAtual.numero}"
+						converterMessage="Número da O.S. invalido!" maxlength="7" />
+					<h:commandButton name="buscar" value=">>"
+						action="#{oservicoMB.buscarPorNumero}" />
+				</h:panelGrid>
+			</h:form>
+			<p></p>
+			<f:view rendered="#{oservicoMB.mostrarVeiculo}">
+				<h:form>
+					<h:panelGrid columns="4" cellpadding="5" cellspacing="0" border="0"
+						width="500">
+						<h:outputLabel value="Data: " />
+						<h:outputLabel value="#{oservicoMB.osAtual.data}"
+							converter="javax.faces.DateTime" />
+						<h:outputLabel value="Status: " />
+						<h:outputLabel value="#{oservicoMB.osAtual.status}" />
+						<h:outputLabel value="Veículo: " />
+						<h:outputLabel value="#{oservicoMB.osAtual.veiculo.placa}" />
+						<h:outputLabel value="#{oservicoMB.osAtual.veiculo.marca}" />
+						<h:outputLabel value="#{oservicoMB.osAtual.veiculo.modelo}" />
+						<h:outputLabel value="Ano\Mod: " />
+						<h:outputLabel
+							value="#{oservicoMB.osAtual.veiculo.anoFabricacao}/#{oservicoMB.osAtual.veiculo.anoModelo}" />
+						<h:outputLabel value="KM: " />
+						<h:outputLabel value="#{oservicoMB.osAtual.kmServico}" />
+					</h:panelGrid>
+				</h:form>
+				<p></p>
+				<h:outputLabel value="Descrição:" />
+				<h:form>
+					<h:inputTextarea readonly="true"
+						value="#{oservicoMB.osAtual.descricao}" cols="80" rows="10" />
+				</h:form>
+			</f:view>
+			<p></p>
+			<h:outputLabel value="Peças: "></h:outputLabel>
+			<h:form target="">
+				<h:dataTable var="veic" value="#{veiculoMB.veiculos}"
+					styleClass="tabela" headerClass="cabecalho"
+					columnClasses="col1,col2,col3">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Placa" />
+						</f:facet>
+						<h:outputText value="#{veic.placa}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Marca" />
+						</f:facet>
+						<h:outputText value="#{veic.marca}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Modelo" />
+						</f:facet>
+						<h:outputText value="#{veic.modelo}" />
+					</h:column>
+				</h:dataTable>
+
+			</h:form>
+
+			<!-- ALTERACOES SOMENTE DAQUI ACIMA -->
+		</div>
+		<div style="clear: both"></div>
+		<div id="rodape">Trabalho de Laboratório de Banco de Dados</div>
+	</div>
+</h:body>
+</html>
+
+
