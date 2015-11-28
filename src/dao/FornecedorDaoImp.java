@@ -32,11 +32,9 @@ public class FornecedorDaoImp implements FornecedorDao {
 		st.setString(4, f.getRua());
 		st.setString(5, f.getNum());
 		st.setString(6, f.getCompl());
-		st.setString(7, f.getBairro());
 		st.setString(8, f.getCidade());
 		st.setString(9, f.getUf());
 		st.setString(10, f.getFone1());
-		st.setString(11, f.getFone2());
 		st.setString(12, f.getStatus());
 		st.setString(13, f.getContato());
 		st.setString(14, f.getObservacao());
@@ -64,11 +62,9 @@ public class FornecedorDaoImp implements FornecedorDao {
 		st.setString(3, f.getRua());
 		st.setString(4, f.getNum());
 		st.setString(5, f.getCompl());
-		st.setString(6, f.getBairro());
 		st.setString(7, f.getCidade());
 		st.setString(8, f.getUf());
 		st.setString(9, f.getFone1());
-		st.setString(10, f.getFone2());
 		st.setString(11, f.getStatus());
 		st.setString(12, f.getContato());
 		st.setString(13, f.getObservacao());
@@ -113,15 +109,12 @@ public class FornecedorDaoImp implements FornecedorDao {
 			f.setRua(rs.getString("rua"));
 			f.setNum(rs.getString("numero"));
 			f.setCompl(rs.getString("complemento"));
-			f.setBairro(rs.getString("bairro"));
 			f.setCidade(rs.getString("cidade"));
 			f.setUf(rs.getString("uf"));
 			f.setFone1(rs.getString("fone1"));
-			f.setFone2(rs.getString("fone2"));
 			f.setStatus(rs.getString("status"));
 			f.setContato(rs.getString("contato"));
 			f.setObservacao(rs.getString("observacao"));
-			f.setDtCadastro(rs.getDate("dt_cadastro"));
 
 			lista.add(f);
 		}
@@ -150,15 +143,12 @@ public class FornecedorDaoImp implements FornecedorDao {
 			f.setRua(rs.getString("rua"));
 			f.setNum(rs.getString("numero"));
 			f.setCompl(rs.getString("complemento"));
-			f.setBairro(rs.getString("bairro"));
 			f.setCidade(rs.getString("cidade"));
 			f.setUf(rs.getString("uf"));
 			f.setFone1(rs.getString("fone1"));
-			f.setFone2(rs.getString("fone2"));
 			f.setStatus(rs.getString("status"));
 			f.setContato(rs.getString("contato"));
 			f.setObservacao(rs.getString("observacao"));
-			f.setDtCadastro(rs.getDate("dt_cadastro"));
 
 		}
 		con.close();
@@ -187,15 +177,12 @@ public class FornecedorDaoImp implements FornecedorDao {
 			f.setRua(rs.getString("rua"));
 			f.setNum(rs.getString("numero"));
 			f.setCompl(rs.getString("complemento"));
-			f.setBairro(rs.getString("bairro"));
 			f.setCidade(rs.getString("cidade"));
 			f.setUf(rs.getString("uf"));
 			f.setFone1(rs.getString("fone1"));
-			f.setFone2(rs.getString("fone2"));
 			f.setStatus(rs.getString("status"));
 			f.setContato(rs.getString("contato"));
 			f.setObservacao(rs.getString("observacao"));
-			f.setDtCadastro(rs.getDate("dt_cadastro"));
 
 			lista.add(f);
 		}

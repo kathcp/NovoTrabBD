@@ -16,8 +16,8 @@ public class DatabaseConnection {
 		String sid = "xe";
 
 		// Configuração dos parâmetros de autenticação
-		String user = "root";
-		String pwd = "aluno";
+		String user = "system"; //"root";
+		String pwd = "sun123";//"aluno";
 
 		if (con == null) {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

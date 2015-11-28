@@ -8,14 +8,14 @@ public class Veiculo {
 	private String anoFabricacao;
 	private String anoModelo;
 	private String status;
-
+	private String chassi; 
 	
 	public String getPlaca() {
 		return placa;
 	}
 	
 	public void setPlaca(String placa) {
-		this.placa = placa.toUpperCase();
+		this.placa = placa;
 	}
 
 	public String getMarca() {
@@ -56,6 +56,14 @@ public class Veiculo {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getChassi() {
+		return chassi;
+	}
+
+	public void setChassi(String chassi) {
+		this.chassi = chassi;
 	}
 
 }

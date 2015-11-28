@@ -7,7 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import dao.PecaDAOImpl;
+import dao.PecaDaoImp;
 import dao.PecaDao;
 import model.Peca;
 
@@ -21,7 +21,7 @@ public class PecaMB implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private Peca pecaAtual = new Peca();
-	private PecaDao pecaDAO = new PecaDAOImpl();
+	private PecaDao pecaDAO = new PecaDaoImp();
 	private List<Peca> pecas = new ArrayList<Peca>();
 	
 	public Peca getPecaAtual() {

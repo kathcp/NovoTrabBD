@@ -64,10 +64,6 @@
 					<h:inputText value="#{fornecedorMB.fornAtual.compl}" />
 					<!-- sem nada -->
 
-					<h:outputLabel value="Bairro:" />
-					<h:inputText value="#{fornecedorMB.fornAtual.bairro}" />
-					<!-- sem nada -->
-
 					<h:outputLabel value="Cidade:" />
 					<h:inputText value="#{fornecedorMB.fornAtual.cidade}" />
 					<!-- sem nada -->
@@ -83,24 +79,12 @@
 					</h:inputText>
 					<!-- sem nada -->
 
-					<h:outputLabel value="Telefone 2:" />
-					<h:inputText value="#{fornecedorMB.fornAtual.fone2}"
-						validatorMessage="Telefone 2 Inválido!">
-						<f:validateLongRange minimum="1" maximum="99999999999"></f:validateLongRange>
-					</h:inputText>
-					<!-- sem nada -->
-
 					<h:outputLabel value="Contato:" />
 					<h:inputText value="#{fornecedorMB.fornAtual.contato}" />
 					<!-- sem nada -->
 
 					<h:outputLabel value="Observação:" />
 					<h:inputText value="#{fornecedorMB.fornAtual.observacao}" />
-					<!-- sem nada -->
-
-					<h:outputLabel value="Data Cadastro:" />
-					<h:inputText value="#{fornecedorMB.fornAtual.dtCadastro}"
-						disabled="true" converter="javax.faces.DateTime" />
 					<!-- sem nada -->
 
 					<h:outputLabel value="Status:" />

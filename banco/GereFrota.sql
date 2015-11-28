@@ -40,10 +40,11 @@ CREATE UNIQUE INDEX XPKtb_veiculo ON tb_veiculo
 
 ALTER TABLE tb_veiculo
 	ADD CONSTRAINT  XPKtb_veiculo PRIMARY KEY (placa);
-
+-- rever
 CREATE TABLE tb_servico
 (
-	data_servico         DATE NOT NULL ,
+	id_os				 INTEGER NOT NULL
+	data_servico         DATE NULL ,
 	servico              VARCHAR2(20) NULL ,
 	descricao            VARCHAR2(400) NULL ,
 	km_servico           INTEGER NULL ,
@@ -51,10 +52,10 @@ CREATE TABLE tb_servico
 );
 
 CREATE UNIQUE INDEX XPKtb_despesa ON tb_servico
-(placa   ASC,data_servico   ASC);
+(placa   ASC);
 
 ALTER TABLE tb_servico
-	ADD CONSTRAINT  XPKtb_despesa PRIMARY KEY (placa,data_servico);
+	ADD CONSTRAINT  XPKtb_despesa PRIMARY KEY (placa);
 
 CREATE TABLE tb_peca
 (
@@ -69,21 +70,21 @@ CREATE TABLE tb_peca
 );
 
 CREATE UNIQUE INDEX XPKtb_peca ON tb_peca
-(cnpj_fornecedor   ASC,codigo   ASC,nfiscal   ASC,placa   ASC,data_servico   ASC);
+(codigo   ASC);
 
 ALTER TABLE tb_peca
-	ADD CONSTRAINT  XPKtb_peca PRIMARY KEY (cnpj_fornecedor,codigo,nfiscal,placa,data_servico);
+	ADD CONSTRAINT  XPKtb_peca PRIMARY KEY (codigo);
 
 ALTER TABLE tb_servico
 	ADD (CONSTRAINT R_21 FOREIGN KEY (placa) REFERENCES tb_veiculo (placa));
 
 ALTER TABLE tb_peca
 	ADD (CONSTRAINT R_20 FOREIGN KEY (cnpj_fornecedor) REFERENCES tb_forn_pecas (cnpj_fornecedor));
-
+-- rever
 ALTER TABLE tb_peca
-	ADD (CONSTRAINT R_22 FOREIGN KEY (placa, data_servico) REFERENCES tb_servico (placa, data_servico));
+	ADD (CONSTRAINT R_22 FOREIGN KEY (placa) REFERENCES tb_servico (placa));
 
-CREATE  TRIGGER  tD_tb_forn_pecas AFTER DELETE ON tb_forn_pecas for each row
+CREATE  TRIGGER  tD_tb_forn_pecas BEFORE DELETE ON tb_forn_pecas for each row
 -- ERwin Builtin Trigger
 -- DELETE trigger on tb_forn_pecas 
 DECLARE NUMROWS INTEGER;
@@ -112,7 +113,7 @@ BEGIN
 END;
 /
 
-CREATE  TRIGGER tU_tb_forn_pecas AFTER UPDATE ON tb_forn_pecas for each row
+CREATE  TRIGGER tU_tb_forn_pecas BEFORE UPDATE ON tb_forn_pecas for each row
 -- ERwin Builtin Trigger
 -- UPDATE trigger on tb_forn_pecas 
 DECLARE NUMROWS INTEGER;
@@ -147,7 +148,7 @@ END;
 /
 
 
-CREATE  TRIGGER  tD_tb_veiculo AFTER DELETE ON tb_veiculo for each row
+CREATE  TRIGGER  tD_tb_veiculo BEFORE DELETE ON tb_veiculo for each row
 -- ERwin Builtin Trigger
 -- DELETE trigger on tb_veiculo 
 DECLARE NUMROWS INTEGER;
@@ -176,7 +177,7 @@ BEGIN
 END;
 /
 
-CREATE  TRIGGER tU_tb_veiculo AFTER UPDATE ON tb_veiculo for each row
+CREATE  TRIGGER tU_tb_veiculo BEFORE UPDATE ON tb_veiculo for each row
 -- ERwin Builtin Trigger
 -- UPDATE trigger on tb_veiculo 
 DECLARE NUMROWS INTEGER;
@@ -211,7 +212,7 @@ END;
 /
 
 
-CREATE  TRIGGER  tD_tb_servico AFTER DELETE ON tb_servico for each row
+CREATE  TRIGGER  tD_tb_servico BEFORE DELETE ON tb_servico for each row
 -- ERwin Builtin Trigger
 -- DELETE trigger on tb_servico 
 DECLARE NUMROWS INTEGER;
@@ -274,7 +275,7 @@ BEGIN
 END;
 /
 
-CREATE  TRIGGER tU_tb_servico AFTER UPDATE ON tb_servico for each row
+CREATE  TRIGGER tU_tb_servico BEFORE UPDATE ON tb_servico for each row
 -- ERwin Builtin Trigger
 -- UPDATE trigger on tb_servico 
 DECLARE NUMROWS INTEGER;
@@ -391,7 +392,7 @@ BEGIN
 END;
 /
 
-CREATE  TRIGGER tU_tb_peca AFTER UPDATE ON tb_peca for each row
+CREATE  TRIGGER tU_tb_peca BEFORE UPDATE ON tb_peca for each row
 -- ERwin Builtin Trigger
 -- UPDATE trigger on tb_peca 
 DECLARE NUMROWS INTEGER;
