@@ -68,34 +68,41 @@
 				</h:form>
 			</f:view>
 			<p></p>
-			<h:outputLabel value="Peças: "></h:outputLabel>
-			<h:form target="">
-				<h:dataTable var="veic" value="#{veiculoMB.veiculos}"
-					styleClass="tabela" headerClass="cabecalho"
-					columnClasses="col1,col2,col3">
+			<f:view rendered="#{oservicoMB.mostrarPecas}">
+				<h:outputLabel value="Peças: "></h:outputLabel>
+				<h:form >
+					<h:dataTable var="peca" value="#{oservicoMB.osAtual.getPecas()}"
+						styleClass="tabela" headerClass="cabecalho"
+						columnClasses="col1,col2,col3,col4">
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Placa" />
-						</f:facet>
-						<h:outputText value="#{veic.placa}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Marca" />
-						</f:facet>
-						<h:outputText value="#{veic.marca}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Modelo" />
-						</f:facet>
-						<h:outputText value="#{veic.modelo}" />
-					</h:column>
-				</h:dataTable>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Código" />
+							</f:facet>
+							<h:outputText value="#{peca.codigo}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Descrição" />
+							</f:facet>
+							<h:outputText value="#{peca.nome}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Qtde" />
+							</f:facet>
+							<h:outputText value="#{peca.qtde}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Valor" />
+							</f:facet>
+							<h:outputText value="#{peca.valor}" />
+						</h:column>
+					</h:dataTable>
 
-			</h:form>
-
+				</h:form>
+			</f:view>
 			<!-- ALTERACOES SOMENTE DAQUI ACIMA -->
 		</div>
 		<div style="clear: both"></div>

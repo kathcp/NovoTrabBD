@@ -14,13 +14,13 @@ import servicos.EnumStatusOservico;
 public class OservicoDaoImp implements OservicoDao {
 
 	@Override
-	public void adicionar(OrdemServico o) throws ClassNotFoundException, SQLException {
+	public void abrir(OrdemServico o) throws ClassNotFoundException, SQLException {
 		Connection con = DatabaseConnection.getConnection();
 
 		StringBuffer sb = new StringBuffer();
 		sb.append("INSERT INTO tb_servico (data_servico, descricao, km_servico, placa, id_os, status) ");
 		sb.append("VALUES (?, ?, ?, ?, ?, ?)");
-		
+
 		PreparedStatement st = con.prepareStatement(sb.toString());
 		st.setDate(1, dataBanco(new Date()));
 		st.setString(2, o.getDescricao());
@@ -35,8 +35,13 @@ public class OservicoDaoImp implements OservicoDao {
 	}
 
 	@Override
-	public void alterar(OrdemServico o) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+	public void fechar(OrdemServico o) throws ClassNotFoundException, SQLException {
+		Connection con = DatabaseConnection.getConnection();
+		String sql = "UPDATE tb_servico SET status = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, EnumStatusOservico.FECHADA.toString());
+		st.executeUpdate();
+		con.close();
 
 	}
 
@@ -80,7 +85,8 @@ public class OservicoDaoImp implements OservicoDao {
 		}
 
 		con.close();
-
+		PecaDao p = new PecaDaoImp();
+		o.setPecas(p.listarPorId(n));
 		return o;
 	}
 
@@ -103,5 +109,5 @@ public class OservicoDaoImp implements OservicoDao {
 			return null;
 		}
 	}
-	
+
 }

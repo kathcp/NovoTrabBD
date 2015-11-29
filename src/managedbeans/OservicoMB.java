@@ -25,6 +25,7 @@ public class OservicoMB implements Serializable {
 	private OservicoDao os = new OservicoDaoImp();
 	private List<OrdemServico> oss = new ArrayList<OrdemServico>();
 	private boolean mostrarVeiculo = false;
+	private boolean mostrarPecas = false;
 
 	public OrdemServico getOsAtual() {
 		return osAtual;
@@ -45,27 +46,44 @@ public class OservicoMB implements Serializable {
 	public String refresh() {
 		osAtual = new OrdemServico();
 		mostrarVeiculo = false;
+		mostrarPecas = false;
 		return "";
 	}
 
-	public String adicionar() {
+	public String abrir() {
 
 		try {
-			os.adicionar(osAtual);
-			osAtual = new OrdemServico();
-			mostrarVeiculo = false;
+			os.abrir(osAtual);
+			refresh();
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fc.addMessage("",
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Ordem Serviço adicionada com sucesso!", ""));
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Ordem Serviço aberta com sucesso!", ""));
 		} catch (Exception e) {
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fc.addMessage("",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao adicionar a ordem de servico!", ""));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao abrir a ordem de servico!", ""));
 			e.printStackTrace();
 		}
 		return "";
 	}
 
+	public String fechar() {
+
+		try {
+			os.fechar(osAtual);
+			refresh();
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.addMessage("",
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Ordem Serviço fechada com sucesso!", ""));
+		} catch (Exception e) {
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.addMessage("",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao fechar a ordem de servico!", ""));
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	public String buscarPorNumero() {
 		try {
 
@@ -73,7 +91,13 @@ public class OservicoMB implements Serializable {
 			if (o != null) {
 				osAtual = o;
 				mostrarVeiculo = true;
+				if (osAtual.getPecas().size() > 0) {
+					mostrarPecas = true;
+				} else {
+					mostrarPecas = false;
+				}
 			} else {
+				mostrarVeiculo = false;
 				FacesContext fc = FacesContext.getCurrentInstance();
 				fc.addMessage("", new FacesMessage(FacesMessage.SEVERITY_INFO, "Ordem de Serviço não cadastrada!", ""));
 			}
@@ -113,6 +137,14 @@ public class OservicoMB implements Serializable {
 
 	public void setMostrarVeiculo(boolean mostrarVeiculo) {
 		this.mostrarVeiculo = mostrarVeiculo;
+	}
+
+	public boolean isMostrarPecas() {
+		return mostrarPecas;
+	}
+
+	public void setMostrarPecas(boolean mostrarPecas) {
+		this.mostrarPecas = mostrarPecas;
 	}
 
 }

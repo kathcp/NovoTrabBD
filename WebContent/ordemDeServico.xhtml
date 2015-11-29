@@ -91,9 +91,11 @@
 						<h:commandButton action="#{oservicoMB.refresh}" value="Limpar" />
 						<h:panelGroup>
 							<h:commandButton action="#{oservicoMB.adicionar}"
-								value="Adicionar" />
+								value="Abrir O.S." />
 							<h:commandButton action="#{veiculoMB.atualizar}"
-								value="Atualizar" />
+								value="Fechar O.S." />
+							<h:commandButton onclick="window.open('pecas.xhtml')"
+								value="Incluir Itens" />
 						</h:panelGroup>
 
 					</h:panelGrid>

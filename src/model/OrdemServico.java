@@ -12,7 +12,7 @@ public class OrdemServico {
 	private String descricao;
 	private String status;
 	private Veiculo veiculo = new Veiculo();
-	private List<Peca> peca = new ArrayList<Peca>();
+	private List<Peca> pecas = new ArrayList<Peca>();
 	
 	public int getNumero() {
 		return numero;
@@ -50,11 +50,11 @@ public class OrdemServico {
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
-	public List<Peca> getPeca() {
-		return peca;
+	public List<Peca> getPecas() {
+		return pecas;
 	}
-	public void setPeca(List<Peca> peca) {
-		this.peca = peca;
+	public void setPecas(List<Peca> pecas) {
+		this.pecas = pecas;
 	}
 	
 	

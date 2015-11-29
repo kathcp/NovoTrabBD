@@ -8,9 +8,9 @@ import model.OrdemServico;
 
 public interface OservicoDao {
 
-	public void adicionar(OrdemServico o) throws ClassNotFoundException, SQLException;
+	public void abrir(OrdemServico o) throws ClassNotFoundException, SQLException;
 
-	public void alterar(OrdemServico o) throws ClassNotFoundException, SQLException;
+	public void fechar(OrdemServico o) throws ClassNotFoundException, SQLException;
 
 	public void remover(OrdemServico o) throws ClassNotFoundException, SQLException;
 

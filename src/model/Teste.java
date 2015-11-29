@@ -56,7 +56,7 @@ public class Teste {
 		f.setStatus("ATIVO");
 		f.setContato("aaaaaaaaa");
 		f.setObservacao("aaaaaaaaaaaa");
-		
+	
 		
 		FornecedorDao dao = new FornecedorDaoImp();
 		try {
@@ -69,7 +69,7 @@ public class Teste {
 			System.out.println("erro sql");
 			e.printStackTrace();
 		}
-		*/
+			*/
 			
 			
 		//DateFormat formatter = new SimpleDateFormat("yyyy");  
@@ -104,8 +104,8 @@ public class Teste {
 		  catch (SQLException ex) { JOptionPane.showMessageDialog(null,
 		  "Erro na conexão!"); ex.printStackTrace(); }
 		  
-		  }*/
-		 
-	}
+		  }
+		 */
+	
 	
 }
