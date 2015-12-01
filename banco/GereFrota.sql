@@ -1,450 +1,206 @@
+--------------------------------------------------------
+--  Arquivo criado - Sexta-feira-Novembro-27-2015   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table TB_FORNECEDOR
+--------------------------------------------------------
 
-CREATE TABLE tb_forn_pecas
-(
-	nome                 VARCHAR2(40) NOT NULL ,
-	cep                  INTEGER NULL ,
-	rua                  VARCHAR2(40) NULL ,
-	numero               VARCHAR2(6) NULL ,
-	complemento          VARCHAR2(40) NULL ,
-	bairro               VARCHAR2(40) NULL ,
-	cidade               VARCHAR2(40) NULL ,
-	uf                   VARCHAR2(2) NULL ,
-	fone1                INTEGER NULL ,
-	fone2                INTEGER NULL ,
-	status               VARCHAR2(20) NULL ,
-	dt_cadastro          DATE NULL ,
-	cnpj_fornecedor      VARCHAR2(14) NOT NULL ,
-	contato              VARCHAR2(20) NULL ,
-	observacao           LONG VARCHAR NULL 
-);
+  CREATE TABLE "ROOT"."TB_FORNECEDOR" 
+   (	"NOME" VARCHAR2(100 BYTE), 
+	"CEP" NUMBER(*,0), 
+	"RUA" VARCHAR2(100 BYTE), 
+	"NUMERO" VARCHAR2(9 BYTE), 
+	"COMPLEMENTO" VARCHAR2(100 BYTE), 
+	"BAIRRO" VARCHAR2(100 BYTE), 
+	"CIDADE" VARCHAR2(100 BYTE), 
+	"UF" VARCHAR2(2 BYTE), 
+	"FONE1" NUMBER(11,0), 
+	"FONE2" NUMBER(11,0), 
+	"STATUS" VARCHAR2(20 BYTE), 
+	"DT_CADASTRO" DATE, 
+	"CNPJ_FORNECEDOR" VARCHAR2(14 BYTE), 
+	"CONTATO" VARCHAR2(20 BYTE), 
+	"OBSERVACAO" VARCHAR2(200 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table TB_PECA
+--------------------------------------------------------
 
-CREATE UNIQUE INDEX XPKtb_fornecedor ON tb_forn_pecas
-(cnpj_fornecedor   ASC);
+  CREATE TABLE "ROOT"."TB_PECA" 
+   (	"NFISCAL" NUMBER(*,0), 
+	"NOME" VARCHAR2(200 BYTE), 
+	"VALOR" NUMBER(*,0), 
+	"QTDE" NUMBER(*,0), 
+	"CNPJ_FORNECEDOR" VARCHAR2(14 BYTE), 
+	"COD_PECA" NUMBER(*,0), 
+	"ID_OS" NUMBER, 
+	"DATA_NF" DATE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table TB_SERVICO
+--------------------------------------------------------
 
-ALTER TABLE tb_forn_pecas
-	ADD CONSTRAINT  XPKtb_fornecedor PRIMARY KEY (cnpj_fornecedor);
+  CREATE TABLE "ROOT"."TB_SERVICO" 
+   (	"DATA_SERVICO" DATE, 
+	"DESCRICAO" VARCHAR2(400 BYTE), 
+	"KM_SERVICO" NUMBER(*,0), 
+	"PLACA" VARCHAR2(7 BYTE), 
+	"ID_OS" NUMBER, 
+	"STATUS" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Table TB_VEICULO
+--------------------------------------------------------
 
-CREATE TABLE tb_veiculo
-(
-	placa                VARCHAR2(7) NOT NULL ,
-	chassi               VARCHAR2(20) NULL ,
-	marca                VARCHAR2(20) NULL ,
-	modelo               VARCHAR2(20) NULL ,
-	ano_fab              INTERVAL YEAR TO MONTH NULL ,
-	ano_mod              INTERVAL YEAR TO MONTH NULL ,
-	status               VARCHAR2(20) NULL 
-);
+  CREATE TABLE "ROOT"."TB_VEICULO" 
+   (	"PLACA" VARCHAR2(7 BYTE), 
+	"MARCA" VARCHAR2(20 BYTE), 
+	"MODELO" VARCHAR2(20 BYTE), 
+	"ANO_FAB" VARCHAR2(4 BYTE), 
+	"ANO_MOD" VARCHAR2(4 BYTE), 
+	"STATUS" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+REM INSERTING into ROOT.TB_FORNECEDOR
+SET DEFINE OFF;
+Insert into ROOT.TB_FORNECEDOR (NOME,CEP,RUA,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,UF,FONE1,FONE2,STATUS,DT_CADASTRO,CNPJ_FORNECEDOR,CONTATO,OBSERVACAO) values ('aaaaaaaaaaaa','11111111','aaaaaaaaaaa','1111','aaaaaaaaa','aaaaaaaa','aaaaaaa','aa','11111111111','22222222222','ATIVO',to_date('20/11/15','DD/MM/RR'),'11111111111111','aaaaaaaaa','aaaaaaaaaaaa');
+Insert into ROOT.TB_FORNECEDOR (NOME,CEP,RUA,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,UF,FONE1,FONE2,STATUS,DT_CADASTRO,CNPJ_FORNECEDOR,CONTATO,OBSERVACAO) values ('aaaaaaaaaaaa','11111111','aaaaaaaaaaa','1111','aaaaaaaaa','aaaaaaaa','aaaaaaa','aa','11111111111','22222222222','ATIVO',to_date('20/11/15','DD/MM/RR'),'33333333333333','aaaaaaaaa','aaaaaaaaaaaa');
+Insert into ROOT.TB_FORNECEDOR (NOME,CEP,RUA,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,UF,FONE1,FONE2,STATUS,DT_CADASTRO,CNPJ_FORNECEDOR,CONTATO,OBSERVACAO) values ('aaaaaaaaaaaa','11111111','aaaaaaaaaaa','1111','aaaaaaaaa','aaaaaaaa','aaaaaaa','aa','11111111111','22222222222','ATIVO',to_date('20/11/15','DD/MM/RR'),'22222222222222','aaaaaaaaa','aaaaaaaaaaaa');
+Insert into ROOT.TB_FORNECEDOR (NOME,CEP,RUA,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,UF,FONE1,FONE2,STATUS,DT_CADASTRO,CNPJ_FORNECEDOR,CONTATO,OBSERVACAO) values ('dddddddddddddddddddddddddd','11111111','aaaaaaaaaaa','1111','aaaaaaaaa','aaaaaaaa','aaaaaaa','aa','11111111111','22222222222','ATIVO',to_date('20/11/15','DD/MM/RR'),'44444444444444','aaaaaaaaa','aaaaaaaaaaaa');
+REM INSERTING into ROOT.TB_PECA
+SET DEFINE OFF;
+REM INSERTING into ROOT.TB_SERVICO
+SET DEFINE OFF;
+Insert into ROOT.TB_SERVICO (DATA_SERVICO,DESCRICAO,KM_SERVICO,PLACA,ID_OS,STATUS) values (to_date('21/11/15','DD/MM/RR'),'serviço de mecanica','112000','CRY6568','1','ABERTA');
+Insert into ROOT.TB_SERVICO (DATA_SERVICO,DESCRICAO,KM_SERVICO,PLACA,ID_OS,STATUS) values (to_date('21/01/15','DD/MM/RR'),'eletrica','100000','AAA1234','2','ABERTA');
+Insert into ROOT.TB_SERVICO (DATA_SERVICO,DESCRICAO,KM_SERVICO,PLACA,ID_OS,STATUS) values (to_date('21/11/15','DD/MM/RR'),'eletrica','100000','AAA1234','3','ABERTA');
+REM INSERTING into ROOT.TB_VEICULO
+SET DEFINE OFF;
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('ddd0909','GM','corsa',null,null,'DISPONIVEL');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('dde0909','GM','corsa',null,null,'DISPONIVEL');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('CVP9040','VW','24250',null,null,'MANUTENÇÃO');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('DDX222','GM','CELTA',null,null,'MANUTENÇÃO');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('DDX2222','FIAT','PALIO',null,null,'MANUTENÇÃO');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('CRY6568','VW','16200','1999','2000','MANUTENÇÃO');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('CRU6568','GM','VECTRA',null,null,'MANUTENÇÃO');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('AAA1234','Iveco','240e25','2010','2011','MANUTENÇÃO');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('DDD0909','VW','16200',null,null,'MANUTENÇÃO');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('CCC1234','GM','CORSA SD',null,null,'DISPONIVEL');
+Insert into ROOT.TB_VEICULO (PLACA,MARCA,MODELO,ANO_FAB,ANO_MOD,STATUS) values ('DDD1234','VW','16200',null,null,'DISPONIVEL');
+--------------------------------------------------------
+--  DDL for Index XPKTB_VEICULO
+--------------------------------------------------------
 
-CREATE UNIQUE INDEX XPKtb_veiculo ON tb_veiculo
-(placa   ASC);
+  CREATE UNIQUE INDEX "ROOT"."XPKTB_VEICULO" ON "ROOT"."TB_VEICULO" ("PLACA") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index XPKTB_PECA
+--------------------------------------------------------
 
-ALTER TABLE tb_veiculo
-	ADD CONSTRAINT  XPKtb_veiculo PRIMARY KEY (placa);
+  CREATE UNIQUE INDEX "ROOT"."XPKTB_PECA" ON "ROOT"."TB_PECA" ("COD_PECA", "ID_OS") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index XPKTB_DESPESA
+--------------------------------------------------------
 
-CREATE TABLE tb_servico
-(
-	data_servico         DATE NOT NULL ,
-	servico              VARCHAR2(20) NULL ,
-	descricao            VARCHAR2(400) NULL ,
-	km_servico           INTEGER NULL ,
-	placa                VARCHAR2(7) NOT NULL 
-);
+  CREATE UNIQUE INDEX "ROOT"."XPKTB_DESPESA" ON "ROOT"."TB_SERVICO" ("PLACA", "DATA_SERVICO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index XPKTB_FORNECEDOR
+--------------------------------------------------------
 
-CREATE UNIQUE INDEX XPKtb_despesa ON tb_servico
-(placa   ASC,data_servico   ASC);
+  CREATE UNIQUE INDEX "ROOT"."XPKTB_FORNECEDOR" ON "ROOT"."TB_FORNECEDOR" ("CNPJ_FORNECEDOR") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  DDL for Index TB_SERVICO_PK
+--------------------------------------------------------
 
-ALTER TABLE tb_servico
-	ADD CONSTRAINT  XPKtb_despesa PRIMARY KEY (placa,data_servico);
+  CREATE UNIQUE INDEX "ROOT"."TB_SERVICO_PK" ON "ROOT"."TB_SERVICO" ("ID_OS", "PLACA") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table TB_PECA
+--------------------------------------------------------
 
-CREATE TABLE tb_peca
-(
-	nfiscal              INTEGER NOT NULL ,
-	nome                 VARCHAR2(200) NULL ,
-	valor                DECIMAL(6,2) NULL ,
-	qtde                 INTEGER NULL ,
-	cnpj_fornecedor      VARCHAR2(14) NOT NULL ,
-	codigo               INTEGER NOT NULL ,
-	placa                VARCHAR2(7) NOT NULL ,
-	data_servico         DATE NOT NULL 
-);
+  ALTER TABLE "ROOT"."TB_PECA" MODIFY ("ID_OS" NOT NULL ENABLE);
+  ALTER TABLE "ROOT"."TB_PECA" MODIFY ("COD_PECA" NOT NULL ENABLE);
+  ALTER TABLE "ROOT"."TB_PECA" MODIFY ("CNPJ_FORNECEDOR" NOT NULL ENABLE);
+  ALTER TABLE "ROOT"."TB_PECA" ADD CONSTRAINT "XPKTB_PECA" PRIMARY KEY ("COD_PECA", "ID_OS")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TB_FORNECEDOR
+--------------------------------------------------------
 
-CREATE UNIQUE INDEX XPKtb_peca ON tb_peca
-(cnpj_fornecedor   ASC,codigo   ASC,nfiscal   ASC,placa   ASC,data_servico   ASC);
+  ALTER TABLE "ROOT"."TB_FORNECEDOR" ADD CONSTRAINT "XPKTB_FORNECEDOR" PRIMARY KEY ("CNPJ_FORNECEDOR")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "ROOT"."TB_FORNECEDOR" MODIFY ("CNPJ_FORNECEDOR" NOT NULL ENABLE);
+  ALTER TABLE "ROOT"."TB_FORNECEDOR" MODIFY ("NOME" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TB_VEICULO
+--------------------------------------------------------
 
-ALTER TABLE tb_peca
-	ADD CONSTRAINT  XPKtb_peca PRIMARY KEY (cnpj_fornecedor,codigo,nfiscal,placa,data_servico);
+  ALTER TABLE "ROOT"."TB_VEICULO" ADD CONSTRAINT "XPKTB_VEICULO" PRIMARY KEY ("PLACA")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "ROOT"."TB_VEICULO" MODIFY ("PLACA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TB_SERVICO
+--------------------------------------------------------
 
-ALTER TABLE tb_servico
-	ADD (CONSTRAINT R_21 FOREIGN KEY (placa) REFERENCES tb_veiculo (placa));
+  ALTER TABLE "ROOT"."TB_SERVICO" ADD CONSTRAINT "TB_SERVICO_PK" PRIMARY KEY ("ID_OS", "PLACA")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "ROOT"."TB_SERVICO" MODIFY ("ID_OS" NOT NULL ENABLE);
+  ALTER TABLE "ROOT"."TB_SERVICO" MODIFY ("PLACA" NOT NULL ENABLE);
+  ALTER TABLE "ROOT"."TB_SERVICO" MODIFY ("DATA_SERVICO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table TB_PECA
+--------------------------------------------------------
 
-ALTER TABLE tb_peca
-	ADD (CONSTRAINT R_20 FOREIGN KEY (cnpj_fornecedor) REFERENCES tb_forn_pecas (cnpj_fornecedor));
+  ALTER TABLE "ROOT"."TB_PECA" ADD CONSTRAINT "R_20" FOREIGN KEY ("CNPJ_FORNECEDOR")
+	  REFERENCES "ROOT"."TB_FORNECEDOR" ("CNPJ_FORNECEDOR") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TB_SERVICO
+--------------------------------------------------------
 
-ALTER TABLE tb_peca
-	ADD (CONSTRAINT R_22 FOREIGN KEY (placa, data_servico) REFERENCES tb_servico (placa, data_servico));
-
-CREATE  TRIGGER  tD_tb_forn_pecas AFTER DELETE ON tb_forn_pecas for each row
--- ERwin Builtin Trigger
--- DELETE trigger on tb_forn_pecas 
-DECLARE NUMROWS INTEGER;
-BEGIN
-    /* ERwin Builtin Trigger */
-    /* tb_forn_pecas  tb_peca on parent delete restrict */
-    /* ERWIN_RELATION:CHECKSUM="0000de9d", PARENT_OWNER="", PARENT_TABLE="tb_forn_pecas"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_20", FK_COLUMNS="cnpj_fornecedor" */
-    SELECT count(*) INTO NUMROWS
-      FROM tb_peca
-      WHERE
-        /*  %JoinFKPK(tb_peca,:%Old," = "," AND") */
-        tb_peca.cnpj_fornecedor = :old.cnpj_fornecedor;
-    IF (NUMROWS > 0)
-    THEN
-      raise_application_error(
-        -20001,
-        'Cannot delete tb_forn_pecas because tb_peca exists.'
-      );
-    END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-CREATE  TRIGGER tU_tb_forn_pecas AFTER UPDATE ON tb_forn_pecas for each row
--- ERwin Builtin Trigger
--- UPDATE trigger on tb_forn_pecas 
-DECLARE NUMROWS INTEGER;
-BEGIN
-  /* ERwin Builtin Trigger */
-  /* tb_forn_pecas  tb_peca on parent update restrict */
-  /* ERWIN_RELATION:CHECKSUM="00011042", PARENT_OWNER="", PARENT_TABLE="tb_forn_pecas"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_20", FK_COLUMNS="cnpj_fornecedor" */
-  IF
-    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
-    :old.cnpj_fornecedor <> :new.cnpj_fornecedor
-  THEN
-    SELECT count(*) INTO NUMROWS
-      FROM tb_peca
-      WHERE
-        /*  %JoinFKPK(tb_peca,:%Old," = "," AND") */
-        tb_peca.cnpj_fornecedor = :old.cnpj_fornecedor;
-    IF (NUMROWS > 0)
-    THEN 
-      raise_application_error(
-        -20005,
-        'Cannot update tb_forn_pecas because tb_peca exists.'
-      );
-    END IF;
-  END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-
-CREATE  TRIGGER  tD_tb_veiculo AFTER DELETE ON tb_veiculo for each row
--- ERwin Builtin Trigger
--- DELETE trigger on tb_veiculo 
-DECLARE NUMROWS INTEGER;
-BEGIN
-    /* ERwin Builtin Trigger */
-    /* tb_veiculo  tb_servico on parent delete restrict */
-    /* ERWIN_RELATION:CHECKSUM="0000da4f", PARENT_OWNER="", PARENT_TABLE="tb_veiculo"
-    CHILD_OWNER="", CHILD_TABLE="tb_servico"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_21", FK_COLUMNS="placa" */
-    SELECT count(*) INTO NUMROWS
-      FROM tb_servico
-      WHERE
-        /*  %JoinFKPK(tb_servico,:%Old," = "," AND") */
-        tb_servico.placa = :old.placa;
-    IF (NUMROWS > 0)
-    THEN
-      raise_application_error(
-        -20001,
-        'Cannot delete tb_veiculo because tb_servico exists.'
-      );
-    END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-CREATE  TRIGGER tU_tb_veiculo AFTER UPDATE ON tb_veiculo for each row
--- ERwin Builtin Trigger
--- UPDATE trigger on tb_veiculo 
-DECLARE NUMROWS INTEGER;
-BEGIN
-  /* ERwin Builtin Trigger */
-  /* tb_veiculo  tb_servico on parent update restrict */
-  /* ERWIN_RELATION:CHECKSUM="000103c9", PARENT_OWNER="", PARENT_TABLE="tb_veiculo"
-    CHILD_OWNER="", CHILD_TABLE="tb_servico"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_21", FK_COLUMNS="placa" */
-  IF
-    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
-    :old.placa <> :new.placa
-  THEN
-    SELECT count(*) INTO NUMROWS
-      FROM tb_servico
-      WHERE
-        /*  %JoinFKPK(tb_servico,:%Old," = "," AND") */
-        tb_servico.placa = :old.placa;
-    IF (NUMROWS > 0)
-    THEN 
-      raise_application_error(
-        -20005,
-        'Cannot update tb_veiculo because tb_servico exists.'
-      );
-    END IF;
-  END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-
-CREATE  TRIGGER  tD_tb_servico AFTER DELETE ON tb_servico for each row
--- ERwin Builtin Trigger
--- DELETE trigger on tb_servico 
-DECLARE NUMROWS INTEGER;
-BEGIN
-    /* ERwin Builtin Trigger */
-    /* tb_servico  tb_peca on parent delete restrict */
-    /* ERWIN_RELATION:CHECKSUM="0000e6f0", PARENT_OWNER="", PARENT_TABLE="tb_servico"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_22", FK_COLUMNS="placa""data_servico" */
-    SELECT count(*) INTO NUMROWS
-      FROM tb_peca
-      WHERE
-        /*  %JoinFKPK(tb_peca,:%Old," = "," AND") */
-        tb_peca.data_servico = :old.data_servico AND
-        tb_peca.placa = :old.placa;
-    IF (NUMROWS > 0)
-    THEN
-      raise_application_error(
-        -20001,
-        'Cannot delete tb_servico because tb_peca exists.'
-      );
-    END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-CREATE  TRIGGER tI_tb_servico BEFORE INSERT ON tb_servico for each row
--- ERwin Builtin Trigger
--- INSERT trigger on tb_servico 
-DECLARE NUMROWS INTEGER;
-BEGIN
-    /* ERwin Builtin Trigger */
-    /* tb_veiculo  tb_servico on child insert restrict */
-    /* ERWIN_RELATION:CHECKSUM="0000efcd", PARENT_OWNER="", PARENT_TABLE="tb_veiculo"
-    CHILD_OWNER="", CHILD_TABLE="tb_servico"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_21", FK_COLUMNS="placa" */
-    SELECT count(*) INTO NUMROWS
-      FROM tb_veiculo
-      WHERE
-        /* %JoinFKPK(:%New,tb_veiculo," = "," AND") */
-        :new.placa = tb_veiculo.placa;
-    IF (
-      /* %NotnullFK(:%New," IS NOT NULL AND") */
-      
-      NUMROWS = 0
-    )
-    THEN
-      raise_application_error(
-        -20002,
-        'Cannot insert tb_servico because tb_veiculo does not exist.'
-      );
-    END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-CREATE  TRIGGER tU_tb_servico AFTER UPDATE ON tb_servico for each row
--- ERwin Builtin Trigger
--- UPDATE trigger on tb_servico 
-DECLARE NUMROWS INTEGER;
-BEGIN
-  /* ERwin Builtin Trigger */
-  /* tb_servico  tb_peca on parent update restrict */
-  /* ERWIN_RELATION:CHECKSUM="00022d23", PARENT_OWNER="", PARENT_TABLE="tb_servico"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_22", FK_COLUMNS="placa""data_servico" */
-  IF
-    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
-    :old.data_servico <> :new.data_servico OR 
-    :old.placa <> :new.placa
-  THEN
-    SELECT count(*) INTO NUMROWS
-      FROM tb_peca
-      WHERE
-        /*  %JoinFKPK(tb_peca,:%Old," = "," AND") */
-        tb_peca.data_servico = :old.data_servico AND
-        tb_peca.placa = :old.placa;
-    IF (NUMROWS > 0)
-    THEN 
-      raise_application_error(
-        -20005,
-        'Cannot update tb_servico because tb_peca exists.'
-      );
-    END IF;
-  END IF;
-
-  /* ERwin Builtin Trigger */
-  /* tb_veiculo  tb_servico on child update restrict */
-  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="tb_veiculo"
-    CHILD_OWNER="", CHILD_TABLE="tb_servico"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_21", FK_COLUMNS="placa" */
-  SELECT count(*) INTO NUMROWS
-    FROM tb_veiculo
-    WHERE
-      /* %JoinFKPK(:%New,tb_veiculo," = "," AND") */
-      :new.placa = tb_veiculo.placa;
-  IF (
-    /* %NotnullFK(:%New," IS NOT NULL AND") */
-    
-    NUMROWS = 0
-  )
-  THEN
-    raise_application_error(
-      -20007,
-      'Cannot update tb_servico because tb_veiculo does not exist.'
-    );
-  END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-
-CREATE  TRIGGER tI_tb_peca BEFORE INSERT ON tb_peca for each row
--- ERwin Builtin Trigger
--- INSERT trigger on tb_peca 
-DECLARE NUMROWS INTEGER;
-BEGIN
-    /* ERwin Builtin Trigger */
-    /* tb_servico  tb_peca on child insert restrict */
-    /* ERWIN_RELATION:CHECKSUM="00020ff1", PARENT_OWNER="", PARENT_TABLE="tb_servico"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_22", FK_COLUMNS="placa""data_servico" */
-    SELECT count(*) INTO NUMROWS
-      FROM tb_servico
-      WHERE
-        /* %JoinFKPK(:%New,tb_servico," = "," AND") */
-        :new.data_servico = tb_servico.data_servico AND
-        :new.placa = tb_servico.placa;
-    IF (
-      /* %NotnullFK(:%New," IS NOT NULL AND") */
-      
-      NUMROWS = 0
-    )
-    THEN
-      raise_application_error(
-        -20002,
-        'Cannot insert tb_peca because tb_servico does not exist.'
-      );
-    END IF;
-
-    /* ERwin Builtin Trigger */
-    /* tb_forn_pecas  tb_peca on child insert restrict */
-    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="tb_forn_pecas"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_20", FK_COLUMNS="cnpj_fornecedor" */
-    SELECT count(*) INTO NUMROWS
-      FROM tb_forn_pecas
-      WHERE
-        /* %JoinFKPK(:%New,tb_forn_pecas," = "," AND") */
-        :new.cnpj_fornecedor = tb_forn_pecas.cnpj_fornecedor;
-    IF (
-      /* %NotnullFK(:%New," IS NOT NULL AND") */
-      
-      NUMROWS = 0
-    )
-    THEN
-      raise_application_error(
-        -20002,
-        'Cannot insert tb_peca because tb_forn_pecas does not exist.'
-      );
-    END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
-CREATE  TRIGGER tU_tb_peca AFTER UPDATE ON tb_peca for each row
--- ERwin Builtin Trigger
--- UPDATE trigger on tb_peca 
-DECLARE NUMROWS INTEGER;
-BEGIN
-  /* ERwin Builtin Trigger */
-  /* tb_servico  tb_peca on child update restrict */
-  /* ERWIN_RELATION:CHECKSUM="0002147d", PARENT_OWNER="", PARENT_TABLE="tb_servico"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_22", FK_COLUMNS="placa""data_servico" */
-  SELECT count(*) INTO NUMROWS
-    FROM tb_servico
-    WHERE
-      /* %JoinFKPK(:%New,tb_servico," = "," AND") */
-      :new.data_servico = tb_servico.data_servico AND
-      :new.placa = tb_servico.placa;
-  IF (
-    /* %NotnullFK(:%New," IS NOT NULL AND") */
-    
-    NUMROWS = 0
-  )
-  THEN
-    raise_application_error(
-      -20007,
-      'Cannot update tb_peca because tb_servico does not exist.'
-    );
-  END IF;
-
-  /* ERwin Builtin Trigger */
-  /* tb_forn_pecas  tb_peca on child update restrict */
-  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="tb_forn_pecas"
-    CHILD_OWNER="", CHILD_TABLE="tb_peca"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="R_20", FK_COLUMNS="cnpj_fornecedor" */
-  SELECT count(*) INTO NUMROWS
-    FROM tb_forn_pecas
-    WHERE
-      /* %JoinFKPK(:%New,tb_forn_pecas," = "," AND") */
-      :new.cnpj_fornecedor = tb_forn_pecas.cnpj_fornecedor;
-  IF (
-    /* %NotnullFK(:%New," IS NOT NULL AND") */
-    
-    NUMROWS = 0
-  )
-  THEN
-    raise_application_error(
-      -20007,
-      'Cannot update tb_peca because tb_forn_pecas does not exist.'
-    );
-  END IF;
-
-
--- ERwin Builtin Trigger
-END;
-/
-
+  ALTER TABLE "ROOT"."TB_SERVICO" ADD CONSTRAINT "R_21" FOREIGN KEY ("PLACA")
+	  REFERENCES "ROOT"."TB_VEICULO" ("PLACA") ENABLE;
